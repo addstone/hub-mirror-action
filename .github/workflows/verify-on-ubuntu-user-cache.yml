@@ -13,7 +13,7 @@ jobs:
       id: cache
       with:
         path: /home/runner/work/hub-mirror-action/hub-mirror-action/hub-mirror-cache
-        key: ${{ runner.os }}-yikun-repos-cache
+        key: ${{ runner.os }}-addstone-repos-cache
 
     - name: Print the cache status
       if: steps.cache.outputs.cache-hit == 'true'
@@ -22,8 +22,8 @@ jobs:
     - name: Mirror Github to Gitee with white list and cache
       uses: ./.
       with:
-        src: github/Yikun
-        dst: gitee/yikunkero
+        src: github/addstone
+        dst: gitee/addstone
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.GITEE_TOKEN }}
         cache_path: /github/workspace/hub-mirror-cache

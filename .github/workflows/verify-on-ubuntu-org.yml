@@ -10,12 +10,12 @@ jobs:
     - name: Mirror Github to Gitee
       uses: ./.
       with:
-        src: github/kunpengcompute
-        dst: gitee/kunpengcompute
+        src: github/soucod
+        dst: gitee/soucod
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token: ${{ secrets.GITEE_TOKEN }}
         account_type: org
         # Only sync Kunpeng
-        black_list: 'KAE'
-        white_list: 'KAE,Kunpeng,kunpengcompute.github.io'
+        # black_list: 'KAE'
+        # white_list: 'KAE,Kunpeng,soucod.github.io'
         force_update: true
