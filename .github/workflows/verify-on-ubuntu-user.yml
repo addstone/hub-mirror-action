@@ -14,6 +14,6 @@ jobs:
         dst: gitee/addstone
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.GITEE_TOKEN }}
-        static_list: 'hub-mirror-action,hashes,simple-spring'
+        black_list: 'hub-mirror-action'
         force_update: true
         debug: true
