@@ -14,6 +14,6 @@ jobs:
         dst: gitee/addstone
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token:  ${{ secrets.GITEE_TOKEN }}
-        black_list: 'hub-mirror-action,.github'
+        black_list: 'hub-mirror-action,.github,hub-mirror-action-addstone'
         force_update: true
         debug: true
