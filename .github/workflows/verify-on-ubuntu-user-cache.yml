@@ -8,16 +8,19 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v1
 
+    - name: Get Time
+      id: get-time
+      run: |
+        echo "::set-output name=date::$(/bin/date -u "+%Y%m%d%H%M%S")"
+      shell: bash
+
     - name: Cache src repos
       uses: actions/cache@v1
       id: cache
       with:
-        path: /home/runner/work/hub-mirror-action/hub-mirror-action/hub-mirror-cache
-        key: ${{ runner.os }}-addstone-repos-cache
-
-    - name: Print the cache status
-      if: steps.cache.outputs.cache-hit == 'true'
-      run: echo "Cached successfully."
+        path: ${{ github.workspace }}/hub-mirror-cache
+        key: ${{ runner.os }}-hub-repos-cache-${{ steps.get-time.outputs.date }}
+        restore-keys: ${{ runner.os }}-hub-repos-cache
 
     - name: Mirror Github to Gitee with white list and cache
       uses: ./.
@@ -32,4 +35,4 @@ jobs:
 
     - name: Print cache path
       run: |
-        ls -la /home/runner/work/hub-mirror-action/hub-mirror-action/hub-mirror-cache
+        ls -la ${{ github.workspace }}/hub-mirror-cache
